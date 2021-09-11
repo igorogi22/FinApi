@@ -104,14 +104,14 @@ app.get("/account/statement/date", (request, response) => {
   const { customer } = request;
   const { date } = request.query;
 
-  if(!date) {
-      return response.status(404).json({ error: "Date param not found!" });
+  if (!date) {
+    return response.status(404).json({ error: "Date param not found!" });
   }
 
   const dateFormat = new Date(date + " 00:00");
 
   const statement = customer.statement.filter(
-    (statement) => 
+    (statement) =>
       statement.created_at.toDateString() ===
       new Date(dateFormat).toDateString()
   );
@@ -120,12 +120,12 @@ app.get("/account/statement/date", (request, response) => {
 });
 
 app.put("/account", (request, response) => {
-    const { customer } = request;
-    const { name } = request.body;
+  const { customer } = request;
+  const { name } = request.body;
 
-    customer.name = name;
+  customer.name = name;
 
-    return response.status(201).send();
-})
+  return response.status(201).send();
+});
 
 app.listen(3333);
