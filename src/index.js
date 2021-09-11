@@ -128,4 +128,10 @@ app.put("/account", (request, response) => {
   return response.status(201).send();
 });
 
+app.get("/account", (request, response) => {
+  const { customer } = request;
+
+  return response.status(200).json(customer);
+});
+
 app.listen(3333);
